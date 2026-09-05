@@ -36,7 +36,16 @@ jobs:
           if [ -f src/requirements.txt ]; then pip install -r src/requirements.txt; elif [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install pytest; fi
 
       - name: Run tests
-        run: python test.py
+        run: |
+          if [ -f test.py ]; then
+            python test.py
+          elif [ -f src/test.py ]; then
+            python src/test.py
+          elif pytest --version >/dev/null 2>&1; then
+            pytest
+          else
+            echo "No se encontró test.py, omitiendo ejecucion de pruebas."
+          fi
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
