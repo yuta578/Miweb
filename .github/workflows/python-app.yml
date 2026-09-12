@@ -23,6 +23,9 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: pip install -r src/requirements.txt
+    - name: check linting
+      working-directory: src
+      run: ruff check .
     - name: Test with pytest
       working-directory: src
       run: pytest test.py
