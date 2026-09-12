@@ -39,4 +39,4 @@ jobs:
       uses: docker/build-push-action@v7
       with:
           push: true
-          tags: ghcr.io/yuta578/MiWeb:latest
+          tags: ghcr.io/yuta578/Miweb:latest
